@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background: linear-gradient(to right, #1a1a1a 30%, #fff 30%);
+    font-family: 'Arial';
+}
+
+#app {
+    padding: 0px 80px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 80px;
+}
+
+.carrinho_menu::after {
+    content: '';
+    display: inline-block;
+    background: url('./assets/carrinho.svg') no-repeat center center;
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+.carrinho_menu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+/*PRODUTOS*/
+
+.produtos_container {
+    max-width: 900px;
+    margin-top: 100px;
+    margin: 100px auto 0px auto;
+}
+
+.produto {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    background: white;
+    box-shadow: 0 0 2rem rgba(0,0,0,0.1);
+    cursor:pointer;
+}
+
+.produto_img{
+    max-width: 300px;
+    margin-right: 40px;
+}
+
+.produto_titulo {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.produto_preco {
+ color: #555;
+}
+
+
+/*MODAL*/
+
+.modal::before {
+content: '';
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: rgba(0,0,0,0.5);
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.modal_container {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to right, transparent 250px, white 250px);
+    display: grid;
+    align-items: flex-end;
+    gap: 50px;
+    padding: 0 50px 50px 50px;
+    animation: fadeIn .3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.modal_fechar {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+}
+
+
+
+.modal_img {
+    grid-column: 1;
+    margin-top: 50px;
+    box-shadow: 0px 3px 4px rgba(0,0,0,0.1), 0px 4px 10px rgba(0,0,0,0.2);
+
+}
+
+.modal_img img {
+    max-width: 350px;
+    display: block;
+}
+
+.modal_dados {
+    grid-column: 2;
+    max-width: 300px;
+}
+
+/*Avaliacoes*/
+
+.avaliacoes {
+    grid-column: 2;
+
+}
+
+.avaliacao {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.avaliacao_descricao {
+    color: rgba(0,0,0,.7);
+    margin: 20px 0;
+
+}
+
+.avaliacao_usuario {
+    font-weight: bold;
+}
+
+.modal_titulo {
+    font-size: 3rem;
+}
+
+.avaliacoes_subtitulos {
+    font-size: 1.7rem;
+}
+
+.modal_btn {
+    margin-top: 80px;
+    padding-bottom: 30px;
+    background: black;
+    cursor: pointer;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: 10px 25px;
+    font-family: arial;
+}
+
+.modal_btn.esgotado {
+    background: #808080;
+}
+
+.modal_btn:active {
+    background-color: #808080;
+}
+
+/*Alerta*/
+
+.alerta {
+    position:absolute;
+    top:20px;
+    left: 0px;
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.alerta.ativo {
+    display: block;
+    animation: fadeInDown .3s forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.alerta_mensagem {
+    background: white;
+    display: inline-block;
+    padding: 20px 40px;
+    border: 2px solid black;
+    box-shadow: 0px 3px 4px rgba(0,0,0,0.1), 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+/*Carrinho*/
+
+.carrinho_modal::before{
+    content: '';
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+}
+
+.carrinho_modal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 20px;
+    display: none;
+}
+
+.carrinho_modal.ativo {
+    display: block;
+}
+
+.carrinho_container {
+    position: relative;
+    margin: 80px auto;
+    background: white;
+    padding: 40px;
+    max-width: 800px;
+    animation: fadeInDown .3s forwards;
+}
+
+
+.carrinho_titulo {
+    margin-bottom: 10px;
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+}
+
+.carrinho_item {
+    display: grid;
+    justify-content: space-between;
+    padding: 10px 0;
+    grid-template-columns: 1fr 1fr 50px;
+    border-bottom: 2px solid rgba(0,0,0,.1);
+}
+
+.carrinho_remover {
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: white;
+}
+
+.carrinho_preco {
+    text-align: right;
+    text-decoration: none;
+}
+
+.footer_modal_carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.carrinho_total {
+    text-align: right;
+    padding: 10px 50px 10px 0; 
+    border-bottom: 2px solid black;
+
+}
+
+.carrinho_finalizar {
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 25px;
+    font-family: Arial, Helvetica, sans-serif; 
+    background-color: #1a1a1a;
+    margin-top: 20px;
+}
+
+.carrinho_fechar {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+}
+
+/*Responsivo*/
+
+@media screen and (max-width: 900px) {
+    #app {
+        padding: 0 10px;
+    }
+    .produtos {
+        margin-top: 40px;
+    }
+    .produto {
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 300px;
+        margin: 30px auto;
+    }
+    .produto_info {
+        padding: 20px;
+    }
+    .produto_img {
+        max-width: 100%;
+    }
+
+    .produto_titulo {
+        font-size: 1.5em;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal_container {
+        gap: 20px;
+        background: white;
+        padding: 10px 0
+    }
+    .modal_img {
+        grid-row: 2;
+    }
+
+    .modal_img img {
+        width: 100%;
+        max-width: initial;
+    }
+
+    .modal_dados {
+        grid-column: 1;
+        padding: 10px;
+    }
+
+    .modal_btn {
+        margin-top: 20px;
+    }
+
+    .avaliacoes {
+        grid-column: 1;
+        padding: 10px;
+    }
+
+    .carrinho_modal {
+        padding: 10px;
+    }
+}
